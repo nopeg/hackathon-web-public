@@ -1,0 +1,7 @@
+# frontend/.dockerignore
+node_modules
+.env
+build
+.DS_Store
+dist
+.git

@@ -1,0 +1,35 @@
+/* src/components/AuthForm/AuthForm.css */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.auth-form__toggle {
+  background: none;
+  border: none;
+  color: #1976d2;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 8px;
+  transition: opacity 0.3s ease;
+  text-align: center;
+}
+
+.auth-form__toggle:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  .auth-form {
+    gap: 1.2rem;
+  }
+  
+  .auth-form__toggle {
+    font-size: 0.85rem;
+    padding: 6px;
+  }
+}

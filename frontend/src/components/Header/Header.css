@@ -1,0 +1,65 @@
+/* src/components/Header/Header.css */
+.header {
+  background: linear-gradient(135deg, #1976d2 0%, #0d47a1 100%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+.header__navigation {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__user-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header__username {
+  color: white;
+  font-size: 0.875rem;
+}
+
+/* Добавляем в конец файла */
+@media (max-width: 768px) {
+  .header__container {
+    flex-wrap: nowrap;
+    overflow: visible;
+  }
+  
+  .header__brand {
+    flex-shrink: 1;
+    min-width: 0;
+  }
+  
+  .header__navigation {
+    flex-shrink: 0;
+  }
+  
+  .header__user-section {
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+}
+@media (max-width: 480px) {
+  .header__container {
+    padding: 0 10px;
+  }
+
+  .header__brand {
+    width: 25%;
+  }
+}

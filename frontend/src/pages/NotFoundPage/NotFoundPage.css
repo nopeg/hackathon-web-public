@@ -1,0 +1,25 @@
+/* src/pages/NotFoundPage/NotFoundPage.css */
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.not-found-container h1 {
+  font-size: 5rem;
+  margin-bottom: 0;
+  color: #ff5252;
+}
+
+.not-found-container h2 {
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.not-found-container p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
