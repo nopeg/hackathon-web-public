@@ -1,9 +1,8 @@
 import axios from 'axios';
 import { AuthFormData, ApiResponse, HackathonCreate, Hackathon, HackathonStatus} from '../types/types';
 
-
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "", 
+  baseURL: process.env.REACT_APP_API_URL || "https://backend-1018.onrender.com", 
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 });
@@ -145,7 +144,7 @@ export const getCurrentUser = async (token: string) => {
 
 export const createHackathon = async (data: HackathonCreate, token: string): Promise<Hackathon> => {
   try {
-    console.log('Sending request with data:', data); // Логируем отправляемые данные
+    console.log('Sending request with data:', data);
     const response = await api.post(`/api/editor/hackathons?token=${token}`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -195,7 +194,6 @@ export const getHackathons = async (status?: HackathonStatus): Promise<Hackathon
     
     const now = new Date();
     
-    // Преобразуем строковые даты в объекты Date и обновляем статусы
     const hackathons = response.data.map((hackathon: any) => {
       const startDate = new Date(hackathon.start_date);
       const endDate = new Date(hackathon.end_date);
@@ -203,7 +201,6 @@ export const getHackathons = async (status?: HackathonStatus): Promise<Hackathon
       
       let newStatus = hackathon.status;
       
-      // Автоматическое определение статуса
       if (now > endDate) {
         newStatus = HackathonStatus.COMPLETED;
       } else if (now >= startDate) {
@@ -273,17 +270,16 @@ export const getHackathonById = async (id: number): Promise<Hackathon> => {
   }
 };
 
-export const joinHackathon = async (hackathonId: number, token: string): Promise<Hackathon> => {
+export const joinHackathon = async (hackathonId: number, userToken: string): Promise<Hackathon> => {
   try {
-    const token = localStorage.getItem('access_token');
-    if (!token) throw new Error('Требуется авторизация');
+    if (!userToken) throw new Error('Требуется авторизация');
 
     const response = await api.post(
-      `/api/hackathons/${hackathonId}/join?token=${token}`, 
+      `/api/hackathons/${hackathonId}/join`,
       {},
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${userToken}`,
           "Content-Type": "application/json", 
         },
       }
