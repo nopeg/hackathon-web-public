@@ -10,9 +10,13 @@ import os
 def updated_app() -> FastAPI:
     app = FastAPI()
 
+    # ИСПРАВЛЕНО: конкретные домены вместо "*"
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],
+        allow_origins=[
+            "https://hackathon-web-public.onrender.com",  # ваш фронтенд
+            "http://localhost:3000",                       # локальная разработка
+        ],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
