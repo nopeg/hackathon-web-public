@@ -3,7 +3,7 @@ import { AuthFormData, ApiResponse, HackathonCreate, Hackathon, HackathonStatus}
 
 
 const api = axios.create({
-  baseURL: "", 
+  baseURL: process.env.REACT_APP_API_URL || "", 
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 });
